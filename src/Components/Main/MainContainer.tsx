@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Main from "./Main";
 import { getTitles } from "../../Store/Reducers/mainReducer";
 import { connect } from "react-redux";
@@ -6,25 +6,23 @@ import { useTypedSelector } from "../../Hooks/useTypedSelector";
 
 
 interface Props {
-    getTitles: () => void;
+    getTitles: (search: string) => void;
 }
 
 function MainContainer(props: Props) {
     let { titles, loading } = useTypedSelector(state => state.mainPage);
+    let [ searchValue, setSearchValue ] = useState("");
     
-    // let handleSearch = (searchRequest: string) => {
-    //     props.getTitles()
-    // }
-
-    useEffect(() => {
-        props.getTitles(); 
-    }, [props])
-
-    if (loading) {
-        return <div>Loading...</div>
+    let handleSearch = (searchRequest: string) => {
+        props.getTitles(searchRequest);
     }
 
-    return <Main titles={titles}/>
+    // useEffect(() => {
+    //     props.getTitles(""); 
+    // }, [props])
+
+    return <Main titles={titles} handleSearch={handleSearch} setSearchValue={setSearchValue} searchValue={searchValue} 
+                loading={loading}/>
 }
 
 

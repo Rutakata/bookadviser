@@ -32,10 +32,10 @@ const setTitles = (payload: Title[]) => {
     return { type: SET_TITLES, payload }
 }
 
-export const getTitles = () => async(dispatch: Dispatch) => {
+export const getTitles = (searchRequest: string) => async(dispatch: Dispatch) => {
     try {
         dispatch(setLoading())
-        let response = await MainApi.getTitleByName();
+        let response = await MainApi.getTitleByName(searchRequest);
         dispatch(setTitles(response.data.data))
     } catch(e) {
         console.error(e);
