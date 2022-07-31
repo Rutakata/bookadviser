@@ -10,6 +10,7 @@ export interface Title {
             en: string
         }
     };
+    cover: string;
 }
 
 export interface MainState {
@@ -19,5 +20,6 @@ export interface MainState {
 
 export interface Action<T> {
     type: string;
-    payload: T;
+    payload?: T;
+    isLoading?: boolean;
 }

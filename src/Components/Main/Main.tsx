@@ -14,6 +14,8 @@ interface Props {
 }
 
 function Main(props:Props) {
+    console.log(props.titles);
+    
     return (
         <Container sx={{height: "800px"}}>
             <Grid container spacing={4}>
@@ -30,9 +32,21 @@ function Main(props:Props) {
                         props.handleSearch(e.target.value);
                     }}/>
                 </Grid>
-                {props.titles.length === 0 ? <Grid item xs={12}><Typography variant="h5" component="h5" sx={{textAlign: "center"}}>You haven't searched anything yet</Typography></Grid>:
-                props.loading ? <Grid item xs={12}><Typography variant="h3" component="h3" sx={{textAlign: "center"}}>Loading...</Typography></Grid>:
-                props.titles.map(title => (<TitleItem titleName={title.attributes.title.en} titleDescription={title.attributes.description.en} key={title.id}/>))}
+                {props.titles.length === 0 ? 
+                    <Grid item xs={12}>
+                        <Typography variant="h5" component="h5" sx={{textAlign: "center"}}>
+                            You haven't searched anything yet
+                        </Typography>
+                    </Grid>:
+                props.loading ? 
+                    <Grid item xs={12}>
+                        <Typography variant="h3" component="h3" sx={{textAlign: "center"}}>
+                            Loading...
+                        </Typography>
+                    </Grid>:
+                props.titles.map(title => (
+                <TitleItem titleName={title.attributes.title.en} titleDescription={title.attributes.description.en} 
+                                                      key={title.id} titleCover={title.cover} titleId={title.id}/>))}
             </Grid>
         </Container>
     )

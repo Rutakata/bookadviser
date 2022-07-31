@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Main from "./Main";
 import { getTitles } from "../../Store/Reducers/mainReducer";
 import { connect } from "react-redux";
@@ -12,6 +12,8 @@ interface Props {
 function MainContainer(props: Props) {
     let { titles, loading } = useTypedSelector(state => state.mainPage);
     let [ searchValue, setSearchValue ] = useState("");
+    console.log(titles);
+    
     
     let handleSearch = (searchRequest: string) => {
         props.getTitles(searchRequest);

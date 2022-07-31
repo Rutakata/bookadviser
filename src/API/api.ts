@@ -7,7 +7,10 @@ const instance = axios.create({
 
 
 export const MainApi = {
-    getTitleByName: (searchRequest = "bleach") => {
-        return instance.get(`manga?title=${searchRequest}`)
+    getTitleByName: (searchRequest = "") => {
+        return instance.get(`manga?title=${searchRequest}`);
+    },
+    getTitleCover: (titleId: string) => {
+        return instance.get(`cover?manga[]=${titleId}`);
     }
 }

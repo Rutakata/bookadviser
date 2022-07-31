@@ -10,3 +10,4 @@ let reducers = combineReducers({
 export type State = ReturnType<typeof reducers>
 
 export let store = createStore(reducers, applyMiddleware(thunk));
+(<any>window).store = store;
