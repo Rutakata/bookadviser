@@ -5,27 +5,17 @@ import React from "react";
 interface Props {
     titleName: string;
     titleDescription: string;
-    titleCover: string;
-    titleId: string;
+    titleCoverLink: string;
 }
 
 function TitleItem(props: Props) {
-    let cover = `https://uploads.mangadex.org/covers/${props.titleId}/${props.titleCover}`;
-    
     return (
         <Grid item xs={12} sm={6} md={4}>
-            {/* <Typography variant="h6" component="h6" sx={{overflow: "hidden", width: "100%"}}>
-                {props.titleName}
-            </Typography>
-            <Typography variant="body1" component="p" sx={{overflow: "hidden", width: "100%"}}>
-                {props.titleDescription ? props.titleDescription: "No description"}
-            </Typography> */}
-
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
-                    height="140"
-                    image={cover}
+                    height="500"
+                    image={props.titleCoverLink}
                     alt={props.titleName}
                 />
                 <CardContent>

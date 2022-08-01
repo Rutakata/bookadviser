@@ -2,7 +2,7 @@ import { Grid, TextField, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { Title } from "../../Store/Interfaces/MainInterfaces/mainInterfaces";
 import React, {  Dispatch, SetStateAction } from "react";
-import TitleItem from "./TitleItem/TitleItem";
+import TitleItemContainer from "./TitleItem/TitleItemContainer";
 
 
 interface Props {
@@ -14,14 +14,12 @@ interface Props {
 }
 
 function Main(props:Props) {
-    console.log(props.titles);
-    
     return (
-        <Container sx={{height: "800px"}}>
+        <Container sx={{minHeight: "800px", marginBottom: "30px"}}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <Typography variant="h4" component="h4" sx={{textAlign: "center"}}>
-                        Here you can find manga by search or by parameters
+                        Find what you will love
                     </Typography>
 
                 </Grid>
@@ -45,8 +43,8 @@ function Main(props:Props) {
                         </Typography>
                     </Grid>:
                 props.titles.map(title => (
-                <TitleItem titleName={title.attributes.title.en} titleDescription={title.attributes.description.en} 
-                                                      key={title.id} titleCover={title.cover} titleId={title.id}/>))}
+                <TitleItemContainer titleName={title.attributes.title.en} titleDescription={title.attributes.description.en} 
+                                                      key={title.id} titleId={title.id} titleCover={title.cover}/>))}
             </Grid>
         </Container>
     )

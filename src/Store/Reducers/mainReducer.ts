@@ -34,11 +34,12 @@ const setTitles = (payload: Title[]) => {
 export const getTitles = (searchRequest: string) => async(dispatch: Dispatch) => {
     try {
         dispatch(setLoading(true))
+
         let response = await MainApi.getTitleByName(searchRequest);    
-        response.data.data.forEach(async (title: Title) => {
-            let cover: string = await MainApi.getTitleCover(title.id).then(response => response.data.data[0].attributes.fileName);
-            title.cover = cover;
-        });
+        // response.data.data.forEach(async (title: Title) => {
+        //     let response = await MainApi.getTitleCover(title.id);
+        //     title.cover = response.data.data[0].attributes.fileName;
+        // });
         
         dispatch(setTitles(response.data.data));
         dispatch(setLoading(false));

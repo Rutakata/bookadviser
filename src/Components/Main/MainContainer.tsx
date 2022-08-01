@@ -12,7 +12,6 @@ interface Props {
 function MainContainer(props: Props) {
     let { titles, loading } = useTypedSelector(state => state.mainPage);
     let [ searchValue, setSearchValue ] = useState("");
-    console.log(titles);
     
     
     let handleSearch = (searchRequest: string) => {
