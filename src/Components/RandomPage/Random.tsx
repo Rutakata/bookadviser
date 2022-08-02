@@ -1,11 +1,11 @@
 import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
-import { RandomTitle } from "./RandomItemContainer";
+import { TitleData } from "../Common/TitlePage/Title";
 
 
 interface Props {
-    randomTitle: RandomTitle,
+    titleData: TitleData,
     titleCover: string;
 }
 
@@ -19,10 +19,10 @@ const RandomItem: React.FC<Props> = (props) => {
                     <Typography variant="h4" component="h4">Random anime</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="h6" component="h6">{props.randomTitle.attributes.title.en}</Typography>
+                    <Typography variant="h6" component="h6">{props.titleData.attributes.title.en}</Typography>
                 </Grid>
                 <Grid item xs={4}>
-                    <img src={props.titleCover} alt={props.randomTitle.attributes.title.en} height="500px"/>
+                    <img src={props.titleCover} alt={props.titleData.attributes.title.en} height="500px"/>
                 </Grid>
             </Grid>
         </Container>

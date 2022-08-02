@@ -10,7 +10,6 @@ export interface Title {
             en: string
         }
     };
-    cover: string;
 }
 
 export interface MainState {

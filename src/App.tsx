@@ -1,9 +1,10 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
+import TitleContainer from './Components/Common/TitlePage/TitleContainer';
 import Header from './Components/Header/Header';
-import MainContainer from './Components/Main/MainContainer';
-import RandomContainer from './Components/Random/RandomItemContainer';
+import MainPageContainer from './Components/MainPage/MainPageContainer';
+import RandomContainer from './Components/RandomPage/RandomContainer';
 
 
 const App = () => {
@@ -11,9 +12,10 @@ const App = () => {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/main" element={<MainContainer />} />
-        <Route path="/random" element={<RandomContainer />} />
         <Route path="*" element={<Navigate to="/main" replace /> }/>
+        <Route path="/main" element={<MainPageContainer />} />
+        <Route path="/random" element={<RandomContainer />} />
+        <Route path="/title/:titleId" element={<TitleContainer />} />
       </Routes>
     </div>
   );

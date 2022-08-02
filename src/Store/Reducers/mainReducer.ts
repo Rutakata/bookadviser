@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { MainApi } from "../../API/api";
+import { MainApi, TitleApi } from "../../API/api";
 import { Title, MainState, Action } from "../Interfaces/MainInterfaces/mainInterfaces"
 
 
@@ -34,13 +34,7 @@ const setTitles = (payload: Title[]) => {
 export const getTitles = (searchRequest: string) => async(dispatch: Dispatch) => {
     try {
         dispatch(setLoading(true))
-
-        let response = await MainApi.getTitleByName(searchRequest);    
-        // response.data.data.forEach(async (title: Title) => {
-        //     let response = await MainApi.getTitleCover(title.id);
-        //     title.cover = response.data.data[0].attributes.fileName;
-        // });
-        
+        let response = await TitleApi.getTitleByName(searchRequest);    
         dispatch(setTitles(response.data.data));
         dispatch(setLoading(false));
     } catch(e) {

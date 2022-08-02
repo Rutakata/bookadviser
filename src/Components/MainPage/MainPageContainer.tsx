@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Main from "./Main";
+import MainPage from "./MainPage";
 import { getTitles } from "../../Store/Reducers/mainReducer";
 import { connect } from "react-redux";
 import { useTypedSelector } from "../../Hooks/useTypedSelector";
@@ -13,16 +13,12 @@ const MainContainer = (props: Props) => {
     let { titles, loading } = useTypedSelector(state => state.mainPage);
     let [ searchValue, setSearchValue ] = useState("");
     
-    
     let handleSearch = (searchRequest: string) => {
+        setSearchValue(searchRequest);
         props.getTitles(searchRequest);
     }
 
-    // useEffect(() => {
-    //     props.getTitles(""); 
-    // }, [props])
-
-    return <Main titles={titles} handleSearch={handleSearch} setSearchValue={setSearchValue} searchValue={searchValue} 
+    return <MainPage titles={titles} handleSearch={handleSearch} searchValue={searchValue} 
                 loading={loading}/>
 }
 

@@ -20,3 +20,18 @@ export const RandomApi = {
         return instance.get(`manga/random`);
     }
 }
+
+export const TitleApi = {
+    getTitleData: (titleId: string) => {
+        return instance.get(`manga/${titleId}`)
+    },
+    getTitleByName: (searchRequest = "") => {
+        return instance.get(`manga?title=${searchRequest}`);
+    },
+    getTitleCover: (titleId: string) => {
+        return instance.get(`cover?manga[]=${titleId}`);
+    },
+    getRandomTitle: () => {
+        return instance.get(`manga/random`);
+    }
+}
