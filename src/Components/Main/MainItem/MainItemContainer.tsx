@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TitleItem from "./TitleItem";
+import TitleItem from "./MainItem";
 import { MainApi } from "../../../API/api";
 //import { Grid, Typography } from "@mui/material";
 

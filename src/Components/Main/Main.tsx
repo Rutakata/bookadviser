@@ -2,7 +2,7 @@ import { Grid, TextField, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { Title } from "../../Store/Interfaces/MainInterfaces/mainInterfaces";
 import React, {  Dispatch, SetStateAction } from "react";
-import TitleItemContainer from "./TitleItem/TitleItemContainer";
+import MainItemContainer from "./MainItem/MainItemContainer";
 
 
 interface Props {
@@ -43,7 +43,7 @@ const Main = (props:Props) => {
                         </Typography>
                     </Grid>:
                 props.titles.map(title => (
-                <TitleItemContainer titleName={title.attributes.title.en} titleDescription={title.attributes.description.en} 
+                <MainItemContainer titleName={title.attributes.title.en} titleDescription={title.attributes.description.en} 
                                                       key={title.id} titleId={title.id} titleCover={title.cover}/>))}
             </Grid>
         </Container>

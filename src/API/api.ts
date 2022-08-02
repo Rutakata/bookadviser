@@ -14,3 +14,9 @@ export const MainApi = {
         return instance.get(`cover?manga[]=${titleId}`);
     }
 }
+
+export const RandomApi = {
+    getRandomTitle: () => {
+        return instance.get(`manga/random`);
+    }
+}

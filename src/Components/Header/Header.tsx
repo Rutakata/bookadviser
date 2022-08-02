@@ -7,6 +7,12 @@ import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
 
 
+const InheritButtonDesign: object = {
+  color: "inherit",
+  textDecoration: "none"
+}
+
+
 const Header = () => {
   return (
     <Box sx={{ flexGrow: 1, marginBottom: "40px", }}>
@@ -15,8 +21,8 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Manga Adviser
           </Typography>
-          <Button color="inherit"><NavLink to="/random">Random</NavLink></Button>
-          <Button color="inherit"><NavLink to="/main">Home</NavLink></Button>
+          <Button color="inherit"><NavLink to="/random" style={InheritButtonDesign}>Random</NavLink></Button>
+          <Button color="inherit"><NavLink to="/main" style={InheritButtonDesign}>Home</NavLink></Button>
         </Toolbar>
       </AppBar>
     </Box>
