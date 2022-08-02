@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
 import TitleItem from "./TitleItem";
 import { MainApi } from "../../../API/api";
 //import { Grid, Typography } from "@mui/material";
@@ -20,7 +19,7 @@ export interface Cover {
     }
 }
 
-function TitleItemContainer(props: Props) {    
+const TitleItemContainer = (props: Props) => {    
     let [cover, setCover] = useState<Cover>();
     //let [loading, setLoading] = useState<boolean>(true);
 
@@ -32,7 +31,7 @@ function TitleItemContainer(props: Props) {
             //setLoading(false);
         }
         requestCover();
-    }, []);
+    }, [props.titleId]);
 
     let titleDesciption:string = props.titleDescription ? props.titleDescription.length > 200 ? 
                                 `${props.titleDescription.slice(0, 201)}...`
@@ -49,4 +48,5 @@ function TitleItemContainer(props: Props) {
                         titleCoverLink={`https:/uploads.mangadex.org/covers/${props.titleId}/${cover?.attributes.fileName}`} />;
 }
 
-export default connect(null, {})(TitleItemContainer);
+
+export default TitleItemContainer;

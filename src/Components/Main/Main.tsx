@@ -13,7 +13,7 @@ interface Props {
     loading: boolean;
 }
 
-function Main(props:Props) {
+const Main = (props:Props) => {
     return (
         <Container sx={{minHeight: "800px", marginBottom: "30px"}}>
             <Grid container spacing={4}>

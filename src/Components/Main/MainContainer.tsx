@@ -9,7 +9,7 @@ interface Props {
     getTitles: (search: string) => void;
 }
 
-function MainContainer(props: Props) {
+const MainContainer = (props: Props) => {
     let { titles, loading } = useTypedSelector(state => state.mainPage);
     let [ searchValue, setSearchValue ] = useState("");
     

@@ -1,14 +1,19 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './Components/Header/Header';
 import MainContainer from './Components/Main/MainContainer';
+import RandomContainer from './Components/Random/RandomContainer';
 
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Header />
-      <MainContainer />
+      <Routes>
+        <Route path="/main" element={<MainContainer />} />
+        <Route path="/random" element={<RandomContainer />} />
+      </Routes>
     </div>
   );
 }
