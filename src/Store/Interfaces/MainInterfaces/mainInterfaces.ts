@@ -3,13 +3,19 @@ export interface Title {
     type: string;
     attributes: {
         title: {
-            en: string,
+            en: string;
         },
-        altItems: object[],
         description: {
-            en: string
-        }
-    };
+            en: string;
+        },
+        tags: {
+            attributes: {
+                name: {
+                    en: string;
+                }
+            }
+        }[]
+    }
 }
 
 export interface MainState {

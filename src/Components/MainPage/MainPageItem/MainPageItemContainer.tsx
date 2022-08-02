@@ -9,14 +9,6 @@ interface Props {
     titleData: TitleData;
 }
 
-export interface Cover {
-    id: string;
-    type: string;
-    attributes: {
-        fileName: string;
-    }
-}
-
 const MainPageItemContainer = (props: Props) => {    
     let [cover, setCover] = useState<string>("");
 

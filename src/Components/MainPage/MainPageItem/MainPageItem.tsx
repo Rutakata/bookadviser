@@ -9,6 +9,11 @@ interface Props {
     titleCover: string;
 }
 
+const InheritButtonDesign: object = {
+    color: "inherit",
+    textDecoration: "none"
+  }
+
 function MainPageItem(props: Props) {
     let titleDescription: string = "";
 
@@ -41,7 +46,7 @@ function MainPageItem(props: Props) {
                 </CardContent>
                 <CardActions>
                     <Button size="medium">
-                        <NavLink to={`/title/${props.titleData.id}`}>
+                        <NavLink to={`/title/${props.titleData.id}`} style={InheritButtonDesign}>
                             Learn more
                         </NavLink>
                     </Button>

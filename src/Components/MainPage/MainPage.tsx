@@ -1,12 +1,12 @@
 import { Grid, TextField, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { Title } from "../../Store/Interfaces/MainInterfaces/mainInterfaces";
 import React from "react";
 import MainPageItemContainer from "./MainPageItem/MainPageItemContainer";
+import { TitleData } from "../Common/TitlePage/Title";
 
 
 interface Props {
-    titles: Title[];
+    titles: TitleData[];
     handleSearch: (search: string) => void;
     searchValue: string;
     loading: boolean;

@@ -1,4 +1,4 @@
-import { CardMedia, Grid, Typography } from "@mui/material";
+import { CardMedia, Chip, Grid, Stack, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 
@@ -6,6 +6,14 @@ import React from "react";
 interface Props {
     titleData: TitleData,
     titleCover: string;
+}
+
+type Tag = {
+    attributes: {
+        name: {
+            en: string;
+        }
+    }
 }
 
 export interface TitleData {
@@ -17,7 +25,8 @@ export interface TitleData {
         },
         description: {
             en: string;
-        }
+        },
+        tags: Tag[]
     }
 }
 
@@ -32,9 +41,9 @@ const Title: React.FC<Props> = (props) => {
                 <Grid item xs={12} md={6} lg={4}>
                     <CardMedia
                         component="img"
-                        height="500"
                         image={props.titleCover}
                         alt={props.titleData.attributes.title.en}
+                        
                     />
                 </Grid>
                 <Grid item xs={12} md={6} lg={8}>
@@ -43,6 +52,13 @@ const Title: React.FC<Props> = (props) => {
                         props.titleData.attributes.description.en
                         : "No description"}
                     </Typography>
+                </Grid>
+                <Grid item xs={12} md={6} lg={4} spacing={2}>
+                    <Stack direction="row" spacing={1} sx={{overflowX: "auto"}}>
+                        {props.titleData.attributes.tags.map((tag: Tag) => (
+                            <Chip label={tag.attributes.name.en}/>
+                        ))}
+                    </Stack>
                 </Grid>
             </Grid>
        </Container>
