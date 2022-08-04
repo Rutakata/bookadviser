@@ -10,13 +10,13 @@ interface Props {
     getTags: () => void;
 }
 
-const MainContainer = (props: Props) => {
-    let { titles, loading } = useTypedSelector(state => state.mainPage);
+const MainPageContainer = (props: Props) => {
+    let { titles, loading, tags } = useTypedSelector(state => state.mainPage);
     let [ searchValue, setSearchValue ] = useState("");
 
     useEffect(() => {
         props.getTags();
-    }, [])
+    }, [props])
     
     let handleSearch = (searchRequest: string) => {
         setSearchValue(searchRequest);
@@ -24,8 +24,8 @@ const MainContainer = (props: Props) => {
     }
 
     return <MainPage titles={titles} handleSearch={handleSearch} searchValue={searchValue} 
-                loading={loading}/>
+                loading={loading} tags={tags} />
 }
 
 
-export default connect(null, { getTitles, getTags })(MainContainer);
+export default connect(null, { getTitles, getTags })(MainPageContainer);

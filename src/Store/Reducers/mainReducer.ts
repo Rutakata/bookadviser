@@ -1,11 +1,6 @@
 import { Dispatch } from "redux";
 import { TitleApi } from "../../API/api";
-import { Title, MainState, Action, Tag } from "../Interfaces/MainInterfaces/mainInterfaces"
-
-
-const SET_TITLES = "SET_TITLES";
-const SET_LOADING = "SET_LOADING";
-const SET_TAGS = "SET_TAGS";
+import { Title, MainState, Action, Tag, actionTypes, setLoadingA, setTitlesA, setTagsA} from "../Interfaces/MainInterfaces/mainInterfaces"
 
 
 let initialState:MainState = {
@@ -16,27 +11,27 @@ let initialState:MainState = {
 
 export function mainReducer(state = initialState, action: Action): MainState  {
     switch(action.type) {
-        case SET_TITLES:
+        case actionTypes.SET_TITLES:
             return { titles: action.payload, loading: true, tags: state.tags }
-        case SET_LOADING:
-            return { titles: state.titles, loading: action.isLoading ? action.isLoading: false, tags: state.tags}
-        case SET_TAGS:
+        case actionTypes.SET_LOADING:
+            return { titles: state.titles, loading: action.isLoading, tags: state.tags}
+        case actionTypes.SET_TAGS:
             return { titles: state.titles, loading: state.loading, tags: [...action.payload] }
         default:
             return state
     }
 }
 
-const setLoading = (isLoading: boolean) => {
-    return { type: SET_LOADING, isLoading }
+const setLoading = (isLoading: boolean): setLoadingA => {
+    return { type: actionTypes.SET_LOADING, isLoading }
 }
 
-const setTitles = (payload: Title[]) => {
-    return { type: SET_TITLES, payload }
+const setTitles = (payload: Title[]): setTitlesA => {
+    return { type: actionTypes.SET_TITLES, payload }
 }
 
-const setTags = (payload: Tag[]) => {
-    return {type: SET_TAGS, payload}
+const setTags = (payload: Tag[]): setTagsA => {
+    return { type: actionTypes.SET_TAGS, payload }
 }
 
 export const getTitles = (searchRequest: string) => async(dispatch: Dispatch) => {

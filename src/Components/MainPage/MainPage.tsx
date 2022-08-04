@@ -3,6 +3,7 @@ import { Container } from "@mui/system";
 import React from "react";
 import MainPageItemContainer from "./MainPageItem/MainPageItemContainer";
 import { TitleData } from "../Common/TitlePage/Title";
+import { Tag } from "../../Store/Interfaces/MainInterfaces/mainInterfaces";
 
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
     handleSearch: (search: string) => void;
     searchValue: string;
     loading: boolean;
+    tags: Tag[];
 }
 
 const MainPage = (props:Props) => {
