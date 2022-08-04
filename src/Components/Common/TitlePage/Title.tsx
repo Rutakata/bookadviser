@@ -54,7 +54,7 @@ const Title: React.FC<Props> = (props) => {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={6} lg={4} spacing={2}>
-                    <Stack direction="row" spacing={1} sx={{overflowX: "auto"}}>
+                    <Stack direction="row" spacing={1} sx={{overflowX: "auto", paddingBottom: "5px"}}>
                         {props.titleData.attributes.tags.map((tag: Tag) => (
                             <Chip label={tag.attributes.name.en}/>
                         ))}

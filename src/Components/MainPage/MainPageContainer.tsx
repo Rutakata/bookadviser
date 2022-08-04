@@ -13,6 +13,8 @@ interface Props {
 const MainPageContainer = (props: Props) => {
     let { titles, loading, tags } = useTypedSelector(state => state.mainPage);
     let [ searchValue, setSearchValue ] = useState("");
+    let [ chosenTags, setChosenTags ] = useState<string[]>([]);
+    let [ isOpen, setOpen ] = useState<boolean>(false);
 
     useEffect(() => {
         props.getTags();
@@ -24,7 +26,8 @@ const MainPageContainer = (props: Props) => {
     }
 
     return <MainPage titles={titles} handleSearch={handleSearch} searchValue={searchValue} 
-                loading={loading} tags={tags} />
+                loading={loading} tags={tags} setChosenTags={setChosenTags} isOpen={isOpen} 
+                setOpen={setOpen} />
 }
 
 
