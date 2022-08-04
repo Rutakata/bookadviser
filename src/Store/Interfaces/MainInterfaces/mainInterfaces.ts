@@ -18,13 +18,24 @@ export interface Title {
     }
 }
 
+export interface Tag {
+    id: string;
+    type: string;
+    attributes: {
+        name: {
+            en: string;
+        }
+    }
+}
+
 export interface MainState {
     titles: Title[];
     loading: boolean;
+    tags: Tag[];
 }
 
-export interface Action<T> {
+export interface Action {
     type: string;
-    payload?: T;
+    payload?: any;
     isLoading?: boolean;
 }
