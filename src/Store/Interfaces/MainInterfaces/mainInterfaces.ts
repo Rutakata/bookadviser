@@ -14,12 +14,8 @@ export interface setLoadingA {
     isLoading: boolean; 
 }
 
-export interface setTagsA {
-    type: actionTypes.SET_TAGS;
-    payload: Tag[];
-}
 
-export type Action = setTitlesA | setLoadingA | setTagsA;
+export type Action = setTitlesA | setLoadingA;
 
 export interface Title {
     id: string;
@@ -41,26 +37,7 @@ export interface Title {
     }
 }
 
-export interface Tag {
-    id: string;
-    type: string;
-    attributes: {
-        name: {
-            en: string;
-        }
-    }
-}
-
 export interface MainState {
     titles: Title[];
     loading: boolean;
-    tags: Tag[];
 }
-
-
-
-// export interface Action {
-//     type: string;
-//     payload?: any;
-//     isLoading?: boolean;
-// }
