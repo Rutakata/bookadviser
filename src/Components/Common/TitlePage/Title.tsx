@@ -1,37 +1,16 @@
 import { CardMedia, Chip, Grid, Stack, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
+import { Tag } from "../../../Store/Interfaces/filterInterfaces";
+import { Title } from "../../../Store/Interfaces/mainInterfaces";
 
 
 interface Props {
-    titleData: TitleData,
+    titleData: Title;
     titleCover: string;
 }
 
-type Tag = {
-    attributes: {
-        name: {
-            en: string;
-        }
-    }
-}
-
-export interface TitleData {
-    id: string;
-    type: string;
-    attributes: {
-        title: {
-            en: string;
-        },
-        description: {
-            en: string;
-        },
-        tags: Tag[]
-    }
-}
-
-
-const Title: React.FC<Props> = (props) => {
+const TitlePage: React.FC<Props> = (props) => {
     return (
        <Container sx={{minHeight: "800px"}}>
             <Grid container spacing={4}>
@@ -65,4 +44,4 @@ const Title: React.FC<Props> = (props) => {
     )
 }
 
-export default Title;
+export default TitlePage;

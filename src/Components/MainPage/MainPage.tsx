@@ -2,13 +2,14 @@ import { Grid, TextField, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { Dispatch, SetStateAction } from "react";
 import MainPageItemContainer from "./MainPageItem/MainPageItemContainer";
-import { TitleData } from "../Common/TitlePage/Title";
 import FilterListIcon from '@mui/icons-material/FilterList';
 import FilterContainer from "./Filter/FilterContainer";
+import Loader from "../Common/Loader";
+import { Title } from "../../Store/Interfaces/mainInterfaces";
 
 
 interface Props {
-    titles: TitleData[];
+    titles: Title[];
     handleSearch: (search: string) => void;
     searchValue: string;
     loading: boolean;
@@ -46,9 +47,7 @@ const MainPage = (props:Props) => {
                     </Grid>:
                 props.loading ? 
                     <Grid item xs={12}>
-                        <Typography variant="h4" component="h4" sx={{textAlign: "center"}}>
-                            Loading...
-                        </Typography>
+                        <Loader />
                     </Grid>:
                 props.titles.map(title => (
                     <MainPageItemContainer key={title.id} titleData={title} />

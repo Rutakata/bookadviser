@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { TitleApi } from "../../API/api";
-import { Action, FilterState, actionTypes, Tag, setTagsA, updateSelectedTagsA, removeSelectedTagA } from "../Interfaces/FilterInterfaces/filterInterfaces";
+import { Action, FilterState, actionTypes, Tag, setTagsA, updateSelectedTagsA, removeSelectedTagA } from "../Interfaces/filterInterfaces";
 
 let initialState: FilterState = {
     tags: [],

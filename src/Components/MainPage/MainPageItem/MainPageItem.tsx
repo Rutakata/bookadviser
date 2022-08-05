@@ -1,12 +1,13 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Skeleton, Typography } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { TitleData } from "../../Common/TitlePage/Title";
+import { Title } from "../../../Store/Interfaces/mainInterfaces";
 
 
 interface Props {
-    titleData: TitleData;
+    titleData: Title;
     titleCover: string;
+    loading: boolean;
 }
 
 const InheritButtonDesign: object = {
@@ -30,12 +31,14 @@ function MainPageItem(props: Props) {
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                    component="img"
-                    height="500"
-                    image={props.titleCover}
-                    alt={props.titleData.attributes.title.en}
-                />
+                {props.loading ? <Skeleton variant="rectangular" width="100%" height="500px" />: 
+                    <CardMedia
+                        component="img"
+                        height="500"
+                        image={props.titleCover}
+                        alt={props.titleData.attributes.title.en}
+                    />
+                }
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {props.titleData.attributes.title.en}

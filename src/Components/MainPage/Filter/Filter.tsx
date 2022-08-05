@@ -1,6 +1,6 @@
-import { Accordion, AccordionDetails, AccordionSummary, Drawer, List, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Drawer, List, Typography } from "@mui/material";
 import React, { Dispatch, SetStateAction } from "react";
-import { Tag } from "../../../Store/Interfaces/FilterInterfaces/filterInterfaces";
+import { Tag } from "../../../Store/Interfaces/filterInterfaces";
 import FilterTagItem from "./FilterTagItem/FilterTagItem";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterSelectedTagItem from "./FilterSelectedTagItem/FilterSelectedTagItem";
@@ -18,30 +18,37 @@ interface Props {
 const Filter: React.FC<Props> = (props) => {
     return (
         <Drawer anchor="right" open={props.isOpen} onClose={() => {props.setOpen(!props.isOpen)}}>
-            <Typography variant="h4" component="h4" sx={{textAlign: "center", width: "500px", mt: "20px"}}>
-                Filter
-            </Typography>
+            <Box sx={{width: "500px", p: "20px"}}>
+                <Typography variant="h4" component="h4" sx={{textAlign: "center"}}>
+                    Filter
+                </Typography>
 
-            <Accordion sx={{width: "500px"}}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-                    <Typography>Select Tags</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    {props.tags.map((tag: Tag) => (
-                        <FilterTagItem tag={tag} updateSelectedTags={props.updateSelectedTags} />
+                <Accordion>
+                    <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+                        <Typography>Select tags</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        {props.tags.map((tag: Tag) => (
+                            <FilterTagItem tag={tag} updateSelectedTags={props.updateSelectedTags} key={tag.id}/>
+                        ))}
+                    </AccordionDetails>
+                </Accordion>
+
+                <Typography variant="h5" component="h5" sx={{textAlign: "center", mt: "20px"}}>
+                    Selected tags
+                </Typography>
+
+                <List>
+                    {props.selectedTags.length === 0 ? 
+                    <Typography variant="body1" component="p">You didn't choose tags</Typography>: null}
+
+                    {props.selectedTags.map((tagId: string) => (
+                        <FilterSelectedTagItem tagId={tagId} tags={props.tags} removeSelectedTag={props.removeSelectedTag} 
+                                                key={tagId} />
                     ))}
-                </AccordionDetails>
-            </Accordion>
-
-            <Typography variant="h5" component="h5" sx={{textAlign: "center", mt: "20px"}}>
-                Selected tags
-            </Typography>
+                </List>
+            </Box>
             
-            <List>
-                {props.selectedTags.map((tagId: string) => (
-                    <FilterSelectedTagItem tagId={tagId} tags={props.tags} removeSelectedTag={props.removeSelectedTag} />
-                ))}
-            </List>
         </Drawer>
     )
 }

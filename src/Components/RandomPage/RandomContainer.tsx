@@ -1,11 +1,12 @@
 import { TitleApi } from "../../API/api";
 import React, { useEffect, useState } from "react";
-import Title, { TitleData } from "../Common/TitlePage/Title";
+import TitlePage from "../Common/TitlePage/Title";
 import Loader from "../Common/Loader";
+import { Title } from "../../Store/Interfaces/mainInterfaces";
 
 
 const RandomContainer = () => {
-    const [titleData, setTitleData] = useState<TitleData>();
+    const [titleData, setTitleData] = useState<Title>();
     const [titleCover, setTitleCover] = useState<string>();
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const RandomContainer = () => {
     }, []);
 
     if (!titleData) return <Loader />
-    return <Title titleData={titleData} titleCover={`https://uploads.mangadex.org/covers/${titleData.id}/${titleCover}`}/>
+    return <TitlePage titleData={titleData} titleCover={`https://uploads.mangadex.org/covers/${titleData.id}/${titleCover}`}/>
 }
 
 export default RandomContainer;

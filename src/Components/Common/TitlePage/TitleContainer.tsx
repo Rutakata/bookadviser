@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { TitleApi } from "../../../API/api";
+import { Title } from "../../../Store/Interfaces/mainInterfaces";
 import Loader from "../Loader";
-import Title, { TitleData } from "./Title";
+import TitlePage from "./Title";
 
 
 const TitleContainer: React.FC = () => {
-    let [titleData, setTitleData] = useState<TitleData>();
+    let [titleData, setTitleData] = useState<Title>();
     let [titleCover, setTitleCover] = useState<string>();
     let {titleId} = useParams<string>();
 
@@ -15,10 +16,14 @@ const TitleContainer: React.FC = () => {
 
         let requestTitle = async(titleId: string | undefined) => {
             if (typeof (titleId) !== "undefined") {
-                let response = await TitleApi.getTitleData(titleId);
-                let cover = await TitleApi.getTitleCover(titleId);
-                setTitleData(response.data.data);
-                setTitleCover(cover.data.data[0].attributes.fileName);
+                try {
+                    let response = await TitleApi.getTitleData(titleId);
+                    let cover = await TitleApi.getTitleCover(titleId);
+                    setTitleData(response.data.data);
+                    setTitleCover(cover.data.data[0].attributes.fileName);
+                }catch(e) {
+                    console.error(e);
+                }
             }
         }
 
@@ -26,8 +31,8 @@ const TitleContainer: React.FC = () => {
     }, [titleId])
     
     if (!titleData) return <Loader />
-    if (!titleCover) return <Loader />
-    return <Title titleData={titleData} titleCover={`https://uploads.mangadex.org/covers/${titleData.id}/${titleCover}`} />
+    return <TitlePage titleData={titleData} 
+                      titleCover={`https://uploads.mangadex.org/covers/${titleData.id}/${titleCover}`} />
 }
 
 export default TitleContainer;

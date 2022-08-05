@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { TitleApi } from "../../API/api";
-import { Title, MainState, Action, actionTypes, setLoadingA, setTitlesA } from "../Interfaces/MainInterfaces/mainInterfaces"
+import { Title, MainState, Action, actionTypes, setLoadingA, setTitlesA } from "../Interfaces/mainInterfaces"
 
 
 let initialState:MainState = {

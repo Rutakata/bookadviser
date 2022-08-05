@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MainPage from "./MainPage";
 import { getTitles } from "../../Store/Reducers/mainReducer";
 import { getTags } from "../../Store/Reducers/filterReducer";

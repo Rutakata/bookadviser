@@ -1,3 +1,5 @@
+import { Tag } from "./filterInterfaces";
+
 export enum actionTypes {
     SET_TITLES = "SET_TITLES",
     SET_LOADING = "SET_LOADING",
@@ -27,13 +29,7 @@ export interface Title {
         description: {
             en: string;
         },
-        tags: {
-            attributes: {
-                name: {
-                    en: string;
-                }
-            }
-        }[]
+        tags: Tag[]
     }
 }
 

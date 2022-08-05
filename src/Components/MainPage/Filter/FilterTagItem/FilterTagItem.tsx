@@ -1,6 +1,6 @@
 import { Chip } from "@mui/material";
 import React from "react";
-import { Tag } from "../../../../Store/Interfaces/FilterInterfaces/filterInterfaces";
+import { Tag } from "../../../../Store/Interfaces/filterInterfaces";
 
 
 interface Props {
