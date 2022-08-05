@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/rutakata.github.io/static/css/main.881b6b64.css",
-    "main.js": "/rutakata.github.io/static/js/main.929158b3.js",
-    "index.html": "/rutakata.github.io/index.html",
-    "main.881b6b64.css.map": "/rutakata.github.io/static/css/main.881b6b64.css.map",
-    "main.929158b3.js.map": "/rutakata.github.io/static/js/main.929158b3.js.map"
+    "main.css": "/rutakata.github.io/manga-adviser/static/css/main.881b6b64.css",
+    "main.js": "/rutakata.github.io/manga-adviser/static/js/main.929158b3.js",
+    "index.html": "/rutakata.github.io/manga-adviser/index.html",
+    "main.881b6b64.css.map": "/rutakata.github.io/manga-adviser/static/css/main.881b6b64.css.map",
+    "main.929158b3.js.map": "/rutakata.github.io/manga-adviser/static/js/main.929158b3.js.map"
   },
   "entrypoints": [
     "static/css/main.881b6b64.css",
