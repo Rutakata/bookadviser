@@ -9,8 +9,8 @@ export const TitleApi = {
     getTitleData: (titleId: string) => {
         return instance.get(`manga/${titleId}`)
     },
-    getTitleByName: (searchRequest = "") => {
-        return instance.get(`manga?title=${searchRequest}`);
+    getTitleByName: (searchRequest = "", offset: number) => {
+        return instance.get(`manga?title=${searchRequest}&limit=9&offset=${offset}`);
     },
     getTitleCover: (titleId: string) => {
         return instance.get(`cover?manga[]=${titleId}`);
@@ -21,7 +21,7 @@ export const TitleApi = {
     getTags: () => {
         return instance.get(`manga/tag`);
     },
-    getTitleByTags: (tagParameter: string) => {
-        return instance.get(`manga?${tagParameter}`)
+    getTitleByTags: (tagParameter: string, offset: number) => {
+        return instance.get(`manga?${tagParameter}&limit=9&offset=${offset}`);
     }
 }

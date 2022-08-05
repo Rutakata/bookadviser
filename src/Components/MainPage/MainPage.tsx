@@ -1,4 +1,4 @@
-import { Grid, TextField, Typography } from "@mui/material";
+import { Grid, Pagination, TextField, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { Dispatch, SetStateAction } from "react";
 import MainPageItemContainer from "./MainPageItem/MainPageItemContainer";
@@ -6,6 +6,8 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import FilterContainer from "./Filter/FilterContainer";
 import Loader from "../Common/Loader";
 import { Title } from "../../Store/Interfaces/mainInterfaces";
+import { paginationActionType } from "./MainPageContainer";
+import PaginationBlock from "./Pagination";
 
 
 interface Props {
@@ -15,12 +17,17 @@ interface Props {
     loading: boolean;
     isOpen: boolean;
     setOpen: Dispatch<SetStateAction<boolean>>;
+    total: number;
+    handlePageChange: (searchValue: string, selectedTags: string[], page: number) => void;
+    paginationAction: paginationActionType;
+    setPaginationAction: React.Dispatch<React.SetStateAction<paginationActionType>>;
+    selectedTags: string[];
 }
 
 const MainPage = (props:Props) => {
     return (
         <Container sx={{minHeight: "800px", marginBottom: "30px"}}>
-            <FilterContainer isOpen={props.isOpen} setOpen={props.setOpen} />
+            <FilterContainer isOpen={props.isOpen} setOpen={props.setOpen} setPaginationAction={props.setPaginationAction} />
 
             <Grid container spacing={4}>
                 <Grid item xs={12}>
@@ -52,6 +59,10 @@ const MainPage = (props:Props) => {
                 props.titles.map(title => (
                     <MainPageItemContainer key={title.id} titleData={title} />
                 ))}
+                <Grid item xs={12}>
+                    <PaginationBlock handlePageChange={props.handlePageChange} searchValue={props.searchValue} 
+                                     selectedTags={props.selectedTags} total={props.total} />
+                </Grid>
             </Grid>
         </Container>
     )

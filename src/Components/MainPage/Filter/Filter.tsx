@@ -4,6 +4,7 @@ import { Tag } from "../../../Store/Interfaces/filterInterfaces";
 import FilterTagItem from "./FilterTagItem/FilterTagItem";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterSelectedTagItem from "./FilterSelectedTagItem/FilterSelectedTagItem";
+import { paginationActionType } from "../MainPageContainer";
 
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
     updateSelectedTags: (tagId: string) => void;
     removeSelectedTag: (tagId: string) => void;
     getTitlesByTags: (tags: string[]) => void;
+    setPaginationAction: React.Dispatch<React.SetStateAction<paginationActionType>>;
 }
 
 const Filter: React.FC<Props> = (props) => {
@@ -49,7 +51,11 @@ const Filter: React.FC<Props> = (props) => {
                     ))}
                 </List>
                 <Button variant="contained" 
-                        onClick={() => props.getTitlesByTags(props.selectedTags)} 
+                        onClick={() => {
+                            props.getTitlesByTags(props.selectedTags);
+                            props.setOpen(false);
+                            props.setPaginationAction(paginationActionType.FILTER);
+                        }} 
                         disabled={!Boolean(props.selectedTags.length)}>
                     Search
                 </Button>
