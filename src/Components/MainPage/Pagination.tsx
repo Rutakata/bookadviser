@@ -12,7 +12,7 @@ interface Props {
 const PaginationBlock: React.FC<Props> = (props) => {
     let handlePageChange = (page: number) => {
         props.handlePageChange(props.searchValue, props.selectedTags, page);
-        //window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); 
+        window.scrollTo({top: 150, left: 0, behavior: 'smooth'}); 
     }
     
     return (

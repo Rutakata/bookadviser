@@ -1,4 +1,4 @@
-import { Grid, Pagination, TextField, Typography } from "@mui/material";
+import { Grid, IconButton, TextField, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { Dispatch, SetStateAction } from "react";
 import MainPageItemContainer from "./MainPageItem/MainPageItemContainer";
@@ -8,6 +8,7 @@ import Loader from "../Common/Loader";
 import { Title } from "../../Store/Interfaces/mainInterfaces";
 import { paginationActionType } from "./MainPageContainer";
 import PaginationBlock from "./Pagination";
+import SearchIcon from '@mui/icons-material/Search';
 
 
 interface Props {
@@ -22,6 +23,7 @@ interface Props {
     paginationAction: paginationActionType;
     setPaginationAction: React.Dispatch<React.SetStateAction<paginationActionType>>;
     selectedTags: string[];
+    getTitles: (searchRequest: string) => void;
 }
 
 const MainPage = (props:Props) => {
@@ -36,14 +38,21 @@ const MainPage = (props:Props) => {
                     </Typography>
                 </Grid>
 
-                <Grid item xs={10} md={11}>
+                <Grid item xs={12} md={10}>
                     <TextField label="Search..." variant="outlined" type="search" fullWidth value={props.searchValue}
                     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                         props.handleSearch(e.target.value);
                     }}/>
                 </Grid>
-                <Grid item xs={2} md={1}>
-                    <FilterListIcon fontSize="large" color="primary" onClick={() => props.setOpen(!props.isOpen)}/>
+                <Grid item xs={6} md={1}>
+                    <IconButton onClick={() => props.getTitles(props.searchValue)} size="large">
+                        <SearchIcon color="primary" />
+                    </IconButton>
+                </Grid>
+                <Grid item xs={6} md={1}>
+                    <IconButton onClick={() => props.setOpen(!props.isOpen)} size="large">
+                        <FilterListIcon color="primary" />
+                    </IconButton>
                 </Grid>
 
                 {props.titles.length === 0 ? 

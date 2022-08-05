@@ -25,9 +25,9 @@ const MainPageContainer = (props: Props) => {
     let handleSearch = (searchRequest: string) => {
         props.setSearchValue(searchRequest);
         setPaginationAction(paginationActionType.SEARCH)
-        if (searchRequest !== "") {
-            props.getTitles(searchRequest);
-        }
+        // if (searchRequest !== "") {
+        //     props.getTitles(searchRequest);
+        // }
     }
 
     let handlePageChange = (searchValue: string, selectedTags: string[], page: number) => {
@@ -42,7 +42,8 @@ const MainPageContainer = (props: Props) => {
     return <MainPage titles={titles} handleSearch={handleSearch} searchValue={searchValue} 
                      loading={loading} isOpen={isOpen} setOpen={setOpen} total={total} 
                      handlePageChange={handlePageChange} paginationAction={paginationAction} 
-                     setPaginationAction={setPaginationAction} selectedTags={selectedTags} />
+                     setPaginationAction={setPaginationAction} selectedTags={selectedTags} 
+                     getTitles={props.getTitles} />
 }
 
 
