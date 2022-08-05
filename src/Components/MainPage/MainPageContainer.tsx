@@ -20,7 +20,9 @@ const MainPageContainer = (props: Props) => {
     
     let handleSearch = (searchRequest: string) => {
         setSearchValue(searchRequest);
-        props.getTitles(searchRequest);
+        if (searchRequest !== "") {
+            props.getTitles(searchRequest);
+        }
     }
 
     return <MainPage titles={titles} handleSearch={handleSearch} searchValue={searchValue} 

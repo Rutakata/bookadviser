@@ -38,3 +38,17 @@ export const getTitles = (searchRequest: string) => async(dispatch: Dispatch) =>
     }
 }
 
+export const getTitlesByTags = (tags: string[]) => async(dispatch: Dispatch) => {
+    let tagParameter: string = "";
+    tags.forEach(tag => tagParameter += `includedTags[]=${tag}&`)
+    tagParameter = tagParameter.slice(0, tagParameter.length-1);
+    
+    try {
+        dispatch(setLoading(true));
+        let response = await TitleApi.getTitleByTags(tagParameter);
+        dispatch(setTitles(response.data.data));
+        dispatch(setLoading(false));
+    }catch(e) {
+        console.error(e);
+    }
+}

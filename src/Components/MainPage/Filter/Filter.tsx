@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Drawer, List, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Drawer, List, Typography } from "@mui/material";
 import React, { Dispatch, SetStateAction } from "react";
 import { Tag } from "../../../Store/Interfaces/filterInterfaces";
 import FilterTagItem from "./FilterTagItem/FilterTagItem";
@@ -13,6 +13,7 @@ interface Props {
     selectedTags: string[];
     updateSelectedTags: (tagId: string) => void;
     removeSelectedTag: (tagId: string) => void;
+    getTitlesByTags: (tags: string[]) => void;
 }
 
 const Filter: React.FC<Props> = (props) => {
@@ -40,13 +41,18 @@ const Filter: React.FC<Props> = (props) => {
 
                 <List>
                     {props.selectedTags.length === 0 ? 
-                    <Typography variant="body1" component="p">You didn't choose tags</Typography>: null}
+                    <Typography variant="body1" component="p" sx={{height: "42px"}}>You didn't choose tags</Typography>: null}
 
                     {props.selectedTags.map((tagId: string) => (
                         <FilterSelectedTagItem tagId={tagId} tags={props.tags} removeSelectedTag={props.removeSelectedTag} 
                                                 key={tagId} />
                     ))}
                 </List>
+                <Button variant="contained" 
+                        onClick={() => props.getTitlesByTags(props.selectedTags)} 
+                        disabled={!Boolean(props.selectedTags.length)}>
+                    Search
+                </Button>
             </Box>
             
         </Drawer>

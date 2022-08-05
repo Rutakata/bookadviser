@@ -20,5 +20,8 @@ export const TitleApi = {
     },
     getTags: () => {
         return instance.get(`manga/tag`);
+    },
+    getTitleByTags: (tagParameter: string) => {
+        return instance.get(`manga?${tagParameter}`)
     }
 }
