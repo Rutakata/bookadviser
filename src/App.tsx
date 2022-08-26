@@ -12,10 +12,10 @@ const App = () => {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="*" element={<Navigate to={process.env.PUBLIC_URL + "/main"} replace /> }/>
-        <Route path={process.env.PUBLIC_URL + "/main"} element={<MainPageContainer />} />
-        <Route path={process.env.PUBLIC_URL + "/random"} element={<RandomContainer />} />
-        <Route path={process.env.PUBLIC_URL + "/title/:titleId"} element={<TitleContainer />} />
+        <Route path="*" element={<Navigate to={"/main"} replace /> }/>
+        <Route path={"/main"} element={<MainPageContainer />} />
+        <Route path={"/random"} element={<RandomContainer />} />
+        <Route path={"/title/:titleId"} element={<TitleContainer />} />
       </Routes>
     </div>
   );
