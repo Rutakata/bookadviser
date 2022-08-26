@@ -21,8 +21,8 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Manga Adviser
           </Typography>
-          <Button color="inherit"><NavLink to="/random" style={InheritButtonDesign}>Random</NavLink></Button>
-          <Button color="inherit"><NavLink to="/main" style={InheritButtonDesign}>Home</NavLink></Button>
+          <Button color="inherit"><NavLink to={process.env.PUBLIC_URL + "/random"} style={InheritButtonDesign}>Random</NavLink></Button>
+          <Button color="inherit"><NavLink to={process.env.PUBLIC_URL + "/main"} style={InheritButtonDesign}>Home</NavLink></Button>
         </Toolbar>
       </AppBar>
     </Box>
