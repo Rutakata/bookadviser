@@ -2,7 +2,7 @@
   "name": "bookadviser",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rutakata.github.io/manga-adviser",
+  "homepage": "https://rutakata.github.io/manga-adviser/",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
