@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/manga-adviser/static/css/main.881b6b64.css",
-    "main.js": "/manga-adviser/static/js/main.3317d4fd.js",
+    "main.js": "/manga-adviser/static/js/main.fd2e18bc.js",
     "index.html": "/manga-adviser/index.html",
     "main.881b6b64.css.map": "/manga-adviser/static/css/main.881b6b64.css.map",
-    "main.3317d4fd.js.map": "/manga-adviser/static/js/main.3317d4fd.js.map"
+    "main.fd2e18bc.js.map": "/manga-adviser/static/js/main.fd2e18bc.js.map"
   },
   "entrypoints": [
     "static/css/main.881b6b64.css",
-    "static/js/main.3317d4fd.js"
+    "static/js/main.fd2e18bc.js"
   ]
 }
